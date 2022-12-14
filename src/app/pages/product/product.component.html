@@ -1,0 +1,8 @@
+<h1>{{product.name}}</h1>
+<img src={{product.image}} alt={{product.name}}>
+<p id="description">{{product.description}}</p>
+<h1 *ngIf="!product.inStock else price">Out of Stock</h1>
+<ng-template #price>
+    <h1>${{product.price}}</h1>
+</ng-template>
+<button (click)="addToCart(product.id, 1)" routerLink="/shoppingCart">add to cart</button> 
