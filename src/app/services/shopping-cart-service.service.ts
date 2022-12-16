@@ -13,4 +13,7 @@ export class ShoppingCartServiceService {
   addCartItem(productId: String, quanity: number):void{
       this.cart.push({productId, quanity})
   }
+  getCartItems(){
+    return this.cart;
+  }
 }

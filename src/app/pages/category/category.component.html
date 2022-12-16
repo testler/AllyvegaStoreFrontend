@@ -1,1 +1,13 @@
-<p>category works!</p>
+<h1>{{category.name}}</h1>
+<ul>
+    <li *ngFor="let item of categoryList">
+        <a routerLink={{item.id}}>
+            <h1>{{item.name}}</h1>
+            <img src={{item.image}} alt={{item.name}}>
+            <h3 *ngIf="!item.inStock else price">Out of Stock</h3>
+            <ng-template #price>
+                <h3>${{item.price}}</h3>
+            </ng-template>
+        </a>
+    </li>
+</ul>
