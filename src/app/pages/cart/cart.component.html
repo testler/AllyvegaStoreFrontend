@@ -1,1 +1,17 @@
-<p>cart works!</p>
+<div *ngIf="emptyCart else normal">
+    <h1>Your cart is empty, add an item to you bag to make a purchase</h1>
+    <a routerLink="/products"><h2>Click here to go to the store page</h2></a>
+</div>
+<ng-template #normal>
+    <h1>Cart has items</h1>
+    <ul *ngIf="cart.length > 0">
+        <li *ngFor="let item of cart">
+            item
+            <p>{{item.qty}}</p>
+            <p>{{item.item.name}}</p>
+            <p>{{item.item.price}}}</p>
+            <p>{{item.item.price}} * {{item.qty}}</p>
+        </li>
+    </ul>
+    <p>Grand total: {{total}}</p>
+</ng-template>

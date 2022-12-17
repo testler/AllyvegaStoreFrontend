@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ShoppingCartServiceService } from '../../services/shopping-cart-service.service';
+import { CartItem } from "../../models/CartItem"
+import { Product } from 'src/app/models/Product';
 
 @Component({
   selector: 'app-cart',
@@ -10,23 +12,23 @@ import { ShoppingCartServiceService } from '../../services/shopping-cart-service
 })
 export class CartComponent implements OnInit {
   emptyCart: Boolean = true;
-  cart: Object[]|any = [
-    { qty: Number,
-      id: String,
-      item: Object,
-    }
-  ];
+  cart: CartItem[]|null = null;
+  detailedCart: Product[]| null = null;
+  total: Number = 0;
   constructor(private http: HttpClient, public shoppingCartService:ShoppingCartServiceService) {
-    this.cart = shoppingCartService.getCartItems();
-    this.emptyCart = (this.cart.length === 0);
     this.http
     .get(environment.apiUrl + "/total", this.cart)
-    .subscribe( (response) => {
-      this.cart = response;
+    .subscribe( (response: Product[]) => {
+      this.detailedCart = response;
+      this.cart.forEach((item: { price: Number|any; }) => {
+        this.total = this.total + item.price;
+      });
     })
    }
   
   ngOnInit(): void {
+    this.cart = this.shoppingCartService.getCartItems();
+    this.emptyCart = (this.cart.length === 0);
   }
 
 }

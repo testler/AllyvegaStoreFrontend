@@ -1,0 +1,19 @@
+div.right{
+    display:block;
+    float: right;
+    width: 50%;
+    text-align: center;
+}
+div.right > img{
+    width: 50%;
+    height: auto;
+}
+div.left{
+    display:block;
+    float:left;
+    width: 50%;
+}
+div.left > p{
+    font-size: 3vh;
+    font-family: var(--global-body-font-family);
+}
