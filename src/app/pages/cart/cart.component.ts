@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { ShoppingCartServiceService } from '../../services/shopping-cart-service.service';
 import { CartItem } from "../../models/CartItem"
 import { Product } from 'src/app/models/Product';
+import { Observable } from 'rxjs';
+import { CartDataObject } from 'src/app/models/CartDataObject';
 
 @Component({
   selector: 'app-cart',
@@ -12,23 +14,21 @@ import { Product } from 'src/app/models/Product';
 })
 export class CartComponent implements OnInit {
   emptyCart: Boolean = true;
-  cart: CartItem[]|null = null;
-  detailedCart: Product[]| null = null;
-  total: Number = 0;
-  constructor(private http: HttpClient, public shoppingCartService:ShoppingCartServiceService) {
-    this.http
-    .get(environment.apiUrl + "/total", this.cart)
-    .subscribe( (response: Product[]) => {
-      this.detailedCart = response;
-      this.cart.forEach((item: { price: Number|any; }) => {
-        this.total = this.total + item.price;
-      });
-    })
+  cart:CartItem[] = [];
+  detailedCart: CartDataObject = {
+    items: [],
+    total: 0,
+};
+  constructor( public shoppingCartService:ShoppingCartServiceService) {
+
    }
   
   ngOnInit(): void {
-    this.cart = this.shoppingCartService.getCartItems();
-    this.emptyCart = (this.cart.length === 0);
+    this.cart = this.shoppingCartService.getCart();
+    if(this.cart){
+      this.emptyCart = false;
+      this.shoppingCartService.getCartDetails().subscribe((res:CartDataObject) => {this.detailedCart = res});
+    }
   }
 
 }

@@ -4,14 +4,14 @@
 </div>
 <ng-template #normal>
     <h1>Cart has items</h1>
-    <ul *ngIf="cart.length > 0">
-        <li *ngFor="let item of cart">
+    <ul *ngIf="detailedCart.items.length > 0">
+        <li *ngFor="let item of detailedCart.items">
             item
-            <p>{{item.qty}}</p>
-            <p>{{item.item.name}}</p>
-            <p>{{item.item.price}}}</p>
-            <p>{{item.item.price}} * {{item.qty}}</p>
+            <p>{{item.quanity}}</p>
+            <p>{{item.name}}</p>
+            <p>{{item.price}}}</p>
+            <p>{{item.price}} * {{item.quanity}}</p>
         </li>
     </ul>
-    <p>Grand total: {{total}}</p>
+    <p>Grand total: {{detailedCart.total}}</p>
 </ng-template>
