@@ -18,6 +18,9 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProductComponent } from './pages/product/product.component';
 import { CategoryComponent } from './pages/category/category.component';
+import { LoginComponent } from './adminPages/login/login.component';
+import { ProductShowPageComponent } from './adminPages/product-show-page/product-show-page.component';
+import { ProductsComponent } from './adminPages/products/products.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +35,12 @@ import { CategoryComponent } from './pages/category/category.component';
     ContactMeComponent,
     LandingPageComponent,
     CheckoutComponent,
+    LoginComponent,
     CartComponent,
     ProductComponent,
     CategoryComponent,
+    ProductShowPageComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

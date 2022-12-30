@@ -1,0 +1,9 @@
+<h1>All the itm that are stored in the database can be seen here</h1>
+<ul>
+    <li *ngFor="let item of items">
+        <a routerLink={{item.id}}>
+            <h1>{{item.name}}</h1>
+            <img src={{item.image}} alt={{item.name}}>
+        </a>
+    </li>
+</ul>

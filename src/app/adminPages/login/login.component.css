@@ -1,0 +1,11 @@
+div.background-div{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+div#login{
+    margin: 0 auto;
+    vertical-align: middle;
+    width: 50vw;
+    height: 50vh;
+}

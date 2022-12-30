@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './adminPages/login/login.component';
+import { ProductShowPageComponent } from './adminPages/product-show-page/product-show-page.component';
+import { ProductsComponent } from './adminPages/products/products.component';
 
 import { AboutComponent } from './pages/about/about.component';
 import { CartComponent } from './pages/cart/cart.component';
@@ -42,7 +45,23 @@ const routes: Routes = [{
 {
   path: "Cart",
   component: CartComponent
-}];
+},
+{
+  path: "admin",
+  component: LoginComponent,
+  children:[{
+    path: "products",
+    component: ProductsComponent,
+  },
+  {
+    path: "products/:productid",
+    component: ProductShowPageComponent
+  }]
+},
+
+
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
