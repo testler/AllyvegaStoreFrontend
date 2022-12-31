@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './adminPages/login/login.component';
 import { ProductShowPageComponent } from './adminPages/product-show-page/product-show-page.component';
 import { ProductsComponent } from './adminPages/products/products.component';
+import { GuardGuard } from './core/guard.guard';
 
 import { AboutComponent } from './pages/about/about.component';
 import { CartComponent } from './pages/cart/cart.component';
@@ -52,10 +53,12 @@ const routes: Routes = [{
   children:[{
     path: "products",
     component: ProductsComponent,
+    canLoad: [GuardGuard]
   },
   {
     path: "products/:productid",
-    component: ProductShowPageComponent
+    component: ProductShowPageComponent,
+    canLoad: [GuardGuard]
   }]
 },
 
