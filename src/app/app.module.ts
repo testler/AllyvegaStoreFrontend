@@ -21,6 +21,7 @@ import { CategoryComponent } from './pages/category/category.component';
 import { LoginComponent } from './adminPages/login/login.component';
 import { ProductShowPageComponent } from './adminPages/product-show-page/product-show-page.component';
 import { ProductsComponent } from './adminPages/products/products.component';
+import { AdminLoginComponent } from './adminPages/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ProductsComponent } from './adminPages/products/products.component';
     CategoryComponent,
     ProductShowPageComponent,
     ProductsComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
